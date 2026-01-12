@@ -17,11 +17,12 @@ if (string.IsNullOrWhiteSpace(jwtSecret) || jwtSecret.Length < 32)
 
 var accessTokenTtlMinutes = builder.Configuration.GetValue("ACCESS_TOKEN_TTL_MIN", 15);
 var refreshTokenTtlDays = builder.Configuration.GetValue("REFRESH_TOKEN_TTL_DAYS", 7);
-var refreshCookieName = builder.Configuration.GetValue("REFRESH_COOKIE_NAME", "todo_refresh");
+var refreshCookieName = builder.Configuration.GetValue<string>("REFRESH_COOKIE_NAME") ?? "todo_refresh";
 var refreshCookieSecure = builder.Configuration.GetValue("REFRESH_COOKIE_SECURE", builder.Environment.IsProduction());
-var passwordResetUrlBase = builder.Configuration.GetValue("PASSWORD_RESET_URL_BASE", "http://localhost:5173/reset");
+var passwordResetUrlBase = builder.Configuration.GetValue<string>("PASSWORD_RESET_URL_BASE") ?? "http://localhost:5173/reset";
 var passwordResetTtlMinutes = builder.Configuration.GetValue("PASSWORD_RESET_TTL_MIN", 30);
-var allowedOrigins = builder.Configuration.GetValue("ALLOWED_ORIGINS", "http://localhost:3000,http://localhost:5173")
+var allowedOrigins = (builder.Configuration.GetValue<string>("ALLOWED_ORIGINS")
+    ?? "http://localhost:3000,http://localhost:5173")
     .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 var rateLimitPerSecond = builder.Configuration.GetValue("RATE_LIMIT_PER_SECOND", 5);
 var rateLimitBurst = builder.Configuration.GetValue("RATE_LIMIT_BURST", 10);

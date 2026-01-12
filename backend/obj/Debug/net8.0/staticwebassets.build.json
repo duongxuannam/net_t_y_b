@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "wTEgpZtqiYmD1XRxWzC9klCMRECIJYI1USdeZvsY2oU=",
+  "Source": "NetTYB.Api",
+  "BasePath": "_content/NetTYB.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
